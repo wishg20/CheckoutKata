@@ -15,7 +15,9 @@ namespace CheckoutKata.Core.Catalogue
             return new PricingRuleCatalogue(new Dictionary<string, IPriceRule>
             {
                 ["A"] = new UnitPriceRule(50),
-                ["B"] = new UnitPriceRule(30)
+                ["B"] = new UnitPriceRule(30),
+                ["C"] = new UnitPriceRule(20),
+                ["D"] = new UnitPriceRule(15)
             });
         }
     }
