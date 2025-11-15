@@ -76,5 +76,19 @@ namespace CheckoutKata.Tests
             _checkoutService.Scan("E");
             Assert.Throws<KeyNotFoundException>(() => _checkoutService.GetTotalPrice());
         }
+
+        /// <summary>
+        /// Multi offer test : 3 for 130 on item A
+        /// </summary>
+        [Test]
+        public void Scanning_AAA_ShouldReturn130()
+        {
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("A");
+            var totalPrice = _checkoutService.GetTotalPrice();
+
+            Assert.That(totalPrice, Is.EqualTo(130));
+        }
     }
 }

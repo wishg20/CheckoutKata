@@ -16,7 +16,7 @@ namespace CheckoutKata.Core.Services
             int total = 0;
             foreach (var item in _itemPrices)
             {
-                total+= _pricingRuleCatalogue.GetPricingRule(item.Key).Calculate(item.Key,_itemPrices.GetValueOrDefault(item.Key));
+                total+= _pricingRuleCatalogue.GetPricingRule(item.Key).Calculate(_itemPrices.GetValueOrDefault(item.Key));
             }
             return total;
         }

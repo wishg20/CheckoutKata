@@ -6,7 +6,7 @@ namespace CheckoutKata.Core.PricingRules
     /// </summary>
     public class UnitPriceRule(int unitPrice) : IPriceRule
     {
-        public int Calculate(string itemCode,int quantity)
+        public int Calculate(int quantity)
         {
                 return quantity * unitPrice;
         }

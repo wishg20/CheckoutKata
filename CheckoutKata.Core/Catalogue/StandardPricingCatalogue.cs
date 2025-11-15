@@ -14,7 +14,7 @@ namespace CheckoutKata.Core.Catalogue
         {
             return new PricingRuleCatalogue(new Dictionary<string, IPriceRule>
             {
-                ["A"] = new UnitPriceRule(50),
+                ["A"] = new MultiItemsDiscoutPriceRule(unitCost:50,offerQuantity:3,specialOffer:130),
                 ["B"] = new UnitPriceRule(30),
                 ["C"] = new UnitPriceRule(20),
                 ["D"] = new UnitPriceRule(15)
