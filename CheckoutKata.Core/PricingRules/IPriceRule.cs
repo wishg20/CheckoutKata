@@ -2,6 +2,6 @@
 {
     public interface IPriceRule
     {
-        int GetPrice(string itemCode, int quantity);
+        int Calculate(string itemCode, int quantity);
     }
 }

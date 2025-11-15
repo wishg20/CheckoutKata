@@ -1,4 +1,4 @@
-using CheckoutKata.Core.PricingRules;
+using CheckoutKata.Core.Catalogue;
 using CheckoutKata.Core.Services;
 
 namespace CheckoutKata.Tests
@@ -6,12 +6,12 @@ namespace CheckoutKata.Tests
     public class Tests
     {
         private ICheckoutService _checkoutService;
-        private  IPriceRule _priceRule;
+        private IPricingRuleCatalogue _pricingRuleCatalogue;
         [SetUp]
         public void Setup()
         {
-            _priceRule = new UnitPriceRule();
-            _checkoutService = new CheckoutService(_priceRule);
+            _pricingRuleCatalogue = StandardPricingCatalogue.GetDefaultPrices();
+            _checkoutService = new CheckoutService(_pricingRuleCatalogue);
         }
 
         [Test]
