@@ -15,8 +15,8 @@
 
         public int Calculate(int quantity)
         {
-            int fullDeals = quantity / _offerQuantity;      // how many deals fit
-            int remainingItems = quantity % _offerQuantity; // items outside the deal
+            int fullDeals = quantity / _offerQuantity;      
+            int remainingItems = quantity % _offerQuantity; 
 
             int dealTotal = fullDeals * _specialOffer;
             int regularTotal = remainingItems * _unitCost;
