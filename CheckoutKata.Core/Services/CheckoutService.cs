@@ -13,7 +13,12 @@ namespace CheckoutKata.Core.Services
 
         public int GetTotalPrice()
         {
-            return _pricingRuleCatalogue.GetPricingRule("A").Calculate("A", _itemPrices.GetValueOrDefault("A"));
+            int total = 0;
+            foreach (var item in _itemPrices)
+            {
+                total+= _pricingRuleCatalogue.GetPricingRule(item.Key).Calculate(item.Key,_itemPrices.GetValueOrDefault(item.Key));
+            }
+            return total;
         }
 
         public void Scan(string item)

@@ -30,5 +30,15 @@ namespace CheckoutKata.Tests
 
             Assert.That(totalPrice, Is.EqualTo(50));
         }
+
+        [Test]
+        public void Scan_TwoItems_ShouldReturn80()
+        {
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("B");
+            var totalPrice = _checkoutService.GetTotalPrice();
+
+            Assert.That(totalPrice, Is.EqualTo(80));
+        }
     }
 }
