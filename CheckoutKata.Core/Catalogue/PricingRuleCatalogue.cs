@@ -18,7 +18,7 @@ namespace CheckoutKata.Core.Catalogue
                 return rule;
             }
 
-            throw new ArgumentException("Unknown SKU: " + sku);
+            throw new KeyNotFoundException("Unknown SKU: " + sku);
         }
     }
 }
