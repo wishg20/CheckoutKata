@@ -69,5 +69,12 @@ namespace CheckoutKata.Tests
 
             Assert.That(totalPrice, Is.EqualTo(30));
         }
+
+        [Test]
+        public void Scanning_Invalid_item_ReturnException()
+        {
+            _checkoutService.Scan("E");
+            Assert.Throws<KeyNotFoundException>(() => _checkoutService.GetTotalPrice());
+        }
     }
 }
