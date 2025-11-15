@@ -134,5 +134,48 @@ namespace CheckoutKata.Tests
 
             Assert.That(totalPrice, Is.EqualTo(95));
         }
+
+        [Test]
+        public void Scanning_AAA_BB_C_D_ShouldReturn210()
+        {
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("B");
+            _checkoutService.Scan("B");
+            _checkoutService.Scan("C");
+            _checkoutService.Scan("D");
+
+            var totalPrice = _checkoutService.GetTotalPrice();
+
+            Assert.That(totalPrice, Is.EqualTo(210));
+        }
+
+        [Test]
+        public void Scanning_D_C_BAB_AAShouldReturn210()
+        {
+            _checkoutService.Scan("D");
+            _checkoutService.Scan("C");
+            _checkoutService.Scan("B");
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("B");
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("A");
+
+            var totalPrice = _checkoutService.GetTotalPrice();
+
+            Assert.That(totalPrice, Is.EqualTo(210));
+        }
+        [Test]
+        public void Scanning_A_B_C_E_ShouldReturnException()
+        {
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("B");
+            _checkoutService.Scan("C");
+            _checkoutService.Scan("E");
+
+            Assert.Throws<KeyNotFoundException>(() => _checkoutService.GetTotalPrice());
+
+        }
     }
 }
