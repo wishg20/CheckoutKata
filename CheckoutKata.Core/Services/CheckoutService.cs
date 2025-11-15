@@ -1,13 +1,19 @@
-﻿namespace CheckoutKata.Core.Services
+﻿using CheckoutKata.Core.PricingRules;
+
+namespace CheckoutKata.Core.Services
 {
     public class CheckoutService : ICheckoutService
     {
         private readonly Dictionary<string,int> _itemPrices = new Dictionary<string,int>();
+        private readonly IPriceRule _priceRule;
+        public CheckoutService(IPriceRule priceRule)
+        {
+            _priceRule = priceRule;
+        }
 
         public int GetTotalPrice()
         {
-            return _itemPrices.Where(x => x.Key == "A").Select(x => 50).FirstOrDefault();
-
+            return _priceRule.GetPrice("A", _itemPrices.GetValueOrDefault("A"));
         }
 
         public void Scan(string item)
