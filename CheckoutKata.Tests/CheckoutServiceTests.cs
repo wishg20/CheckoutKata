@@ -18,5 +18,14 @@ namespace CheckoutKata.Tests
 
             Assert.That(totalPrice, Is.EqualTo(0));
         }
+
+        [Test]
+        public void Scan_SingleItem_ReturnsUnitPrice()
+        {
+            _checkoutService.Scan("A");
+            var totalPrice = _checkoutService.GetTotalPrice();
+
+            Assert.That(totalPrice, Is.EqualTo(50));
+        }
     }
 }
